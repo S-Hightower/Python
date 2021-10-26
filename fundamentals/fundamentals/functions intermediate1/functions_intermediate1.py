@@ -9,11 +9,21 @@
 # }
 # z = [ {'x': 10, 'y': 20} ]
 
-# x[1][0] = 15
-# students[0]['last_name'] = 'Bryant'
-# sports_directory['soccer'][0] = 'Andres'
-# z[0]['y'] = 30
+# def change_x(some_list):
+#     some_list[1][0] = 15
+# change_x(x)
 
+# def change_name(some_list):
+#     some_list[0]['last_name'] = 'Bryant'
+# change_name(students)
+
+# def change_sports(some_dict):
+#     some_dict['soccer'][0] = 'Andres'
+# change_sports(sports_directory)
+
+# def change_z(some_list):
+#     some_list[0]['y'] = 30
+# change_z(z)
 
 # students = [
 #          {'first_name':  'Michael', 'last_name' : 'Jordan'},
@@ -42,10 +52,10 @@
 
 # iterateDictionary2('first_name', students)
 
-dojo = {
-   'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
-   'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
-}
+# dojo = {
+#    'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+#    'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
+# }
 # printInfo(dojo)
 # # output:
 # 7 LOCATIONS

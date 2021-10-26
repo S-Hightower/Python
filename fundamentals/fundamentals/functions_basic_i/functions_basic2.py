@@ -10,11 +10,11 @@
 
 # Print and Return - Create a function that will receive a list with two numbers. Print the first value and return the second.
 # Example: print_and_return([1,2]) should print 1 and return 2
-def printAndReturn(num1, num2):
-    print(num1)
-    return num2
+# def printAndReturn(num1, num2):
+#     print(num1)
+#     return num2
 
-printAndReturn(5,7)
+# printAndReturn(5,7)
 
 # First Plus Length - Create a function that accepts a list and returns the sum of the first value in the list plus the list's length.
 # Example: first_plus_length([1,2,3,4,5]) should return 6 (first value: 1 + length: 5)

@@ -1,21 +1,3 @@
-class Ninja:
-    def __init__(self, first_name, last_name, treats, pet_food, pet):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.treats = treats
-        self.pet_food = pet_food
-        self.pet = pet
-
-    def walk(self):
-        #  - walks the ninja's pet invoking the pet play() method
-
-    def feed(self):
-        #  - feeds the ninja's pet invoking the pet eat() method
-
-    def bathe(self):
-        #  - cleans the ninja's pet invoking the pet noise() method
-
-
 class Pet:
     def __init__(self, name, type, tricks, health, energy):
         self.name = name
@@ -38,11 +20,31 @@ class Pet:
         return self
 
     def noise(self,type):
-        if self.type = "dog":
+        if self.type == "dog":
             print("Woof!")
-        elif:
-            self.type = "cat":
+        elif self.type == "cat":
             print("Meow!")
         else:
             print("What am I?!")
 
+class Ninja:
+    def __init__(self, first_name, last_name, treats, pet_food, pet):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.treats = treats
+        self.pet_food = pet_food
+        self.pet = pet
+
+    def walk(self):
+         self.pet.play()
+
+    def feed(self):
+        self.pet.eat()
+
+    def bathe(self):
+        self.pet.noise()
+
+Nezuko = Pet("Nezuko", "cat", "Epic Defend", 100, 100)
+Tanjiro = Ninja("Tanjiro", "Kamado", "sweets", "veggies", Nezuko)
+
+Tanjiro.walk()

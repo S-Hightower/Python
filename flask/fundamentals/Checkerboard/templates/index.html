@@ -23,10 +23,10 @@
 </head>
 <body>
     <table>
-        {%for space in range(input1):%}
+        {%for i in range(input1):%}
             <tr>
-                {for row in range(input2):%}
-                    <td>{{ (space + row)%2+1}}</td>
+                {for j in range(input2):%}
+                    <td>{{ (i + j)%2+1}}</td>
                 {%endfor%}
             </tr>
         {%endfor%}

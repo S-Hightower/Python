@@ -4,13 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def server_init():
-    return "Working!"
+    return render_template('index.html', across = 8, down = 8)
 
-@app.route('/<x>/<y>')
-def chek_board(x,y):
-    input1 = int(x)
-    input2 = int(y)
-    return render_template("index.html", input1 = input1, input2 = input2)
+@app.route('/<num>')
+def step_two(num):
+    return render_template("index.html", across = 8, down = int(num))
 
 if __name__=="__main__":
     app.run(debug=True)

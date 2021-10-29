@@ -8,7 +8,11 @@ def server_init():
 
 @app.route('/<num>')
 def step_two(num):
-    return render_template("index.html", across = 8, down = int(num))
+    return render_template('index.html', across = 8, down = int(num))
+
+@app.route('/<x>/<y>')
+def step_three(x,y):
+    return render_template('index.html', across = int(x), int(y))
 
 if __name__=="__main__":
     app.run(debug=True)

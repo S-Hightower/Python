@@ -12,7 +12,7 @@ def step_two(num):
 
 @app.route('/<x>/<y>')
 def step_three(x,y):
-    return render_template('index.html', across = int(x), int(y))
+    return render_template('index.html', across = int(x), down =int(y))
 
 if __name__=="__main__":
     app.run(debug=True)

@@ -9,10 +9,10 @@
 </head>
 <body>
     <table>
-        {% for i in range(down) %}
+        {% for i in range(down): %}
             <tr>
-                {% for j in range(across) %}
-                    <td class = "color_one" {{ (i + j)%2 }}></td>
+                {% for j in range(across): %}
+                    <td class = 'color{{ (i + j)%2 + 1}}''></td>
                 {% endfor %}
             </tr>
         {% endfor %}

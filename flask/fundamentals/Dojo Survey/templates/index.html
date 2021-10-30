@@ -9,18 +9,29 @@
 </head>
 <body>
     <div class="container">
-
-
-
-
-
-
-
-
-
-
-
-
+        <h1>Submission Form</h1>
+        <form action="/submission" method="post">
+        <label for="name">Your Name:</label>
+            <input type="text" name="name">
+        <label for="location">Dojo Location:</label>
+            <select name="location">
+                <option value="San Jose">San Jose</option>
+                <option value="Bellevue">Bellevue</option>
+                <option value="LA">LA</option>
+                <option value="Boise">Boise</option>
+                <option value="Chicago">Chicago</option>
+            </select>
+        <label for="language">Favorite Language:</label>
+            <select name="language">
+                <option value="Python">Python</option>
+                <option value="Javascript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C#">C#</option>
+            </select>
+        <label for="comment">Comment(optional)</label>
+            <textarea name="comment"></textarea>
+        <input type="submit" value="Submit">
+        </form>
     </div>
 </body>
 </html>

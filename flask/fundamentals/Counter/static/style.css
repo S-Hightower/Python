@@ -16,24 +16,7 @@
     padding: 60px;
 }
 
-#clickCounter{
-    margin-left: 55px;
-    margin-top: 10px;
-}
-
-.countOne{
-    height: auto;
-    width: 60px;
-    background-color: rgb(6, 206, 6);
-    position: fixed;
-    top: 250px;
-}
-
-.resetLikes{
-    height: auto;
-    width: 60px;
-    background-color: red;
-    position: fixed;
-    top: 250px;
-    right: 1030px;
+h3{
+    margin-left: 50px;
+    padding-bottom: 10px;
 }

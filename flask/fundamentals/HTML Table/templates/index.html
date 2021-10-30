@@ -16,9 +16,9 @@
         <tbody>
             {% for user in users %}
             <tr>
-                <td>{{ user ['First Name'] }}</td>
-                <td>{{ user ['Last Name'] }}</td>
-                <td>{{ user ['Full Name'] }}</td>
+                <td>{{user['first_name']}}</td>
+                <td>{{user['last_name']}}</td>
+                <td>{{user['first_name', 'last_name']}}</td>
             </tr>
             {% endfor %}
         </tbody>

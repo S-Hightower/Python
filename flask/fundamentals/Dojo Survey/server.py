@@ -9,14 +9,12 @@ def server_init():
     return render_template('index.html')
 
 @app.route('/results', methods = ['POST'])
-def return_results():
-    print ("Submitted Info:")
-        name = request.form['your_name']
+def results():
+        name = request.form['name']
         location = request.form['location']
         language = request.form['language']
         comment = request.form['comment']
-    print name, location, language, comment
-    return render_template('results.html', name = request.form['your_name'], location = request.form['location'], language = request.form['language'], comment = request.form['comment'])
+    return render_template('results.html', name = request.form['name'], location = request.form['location'], language = request.form['language'], comment = request.form['comment'])
     return redirect('/')
 
 if __name__=="__main__":

@@ -9,10 +9,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Counter</h1>
-        <h3>clicks</h3>
-        <a>Click</a>
-        <a>Reset</a>
+        <div class="box">
+            <h1>Counter</h1>
+            <h3 id="clickCounter"> </h3>
+            <button class="countOne" onclick="clickOne(this)">Click</button>
+            <button class="resetLikes" onclick="resetOne(this)">Reset</button>
+        </div>
     </div>
     <script type="text/javascript" src="{{ url_for('static', filename='counter.js') }}"></script>
 </body>

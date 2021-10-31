@@ -15,6 +15,6 @@ def results():
         language = request.form['language']
         comment = request.form['comment']
         return render_template('results.html', name = request.form['name'], location = request.form['location'], language = request.form['language'], comment = request.form['comment'])
-
+        
 if __name__=="__main__":
     app.run(debug=True)

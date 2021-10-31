@@ -6,7 +6,7 @@
 .container{
     height: 400px;
     width: 500px;
-    background-color: rgb(248, 182, 215);
+    background-color: rgb(248, 223, 236);
     margin: 50px;
     border: 5px solid black;
 }
@@ -28,6 +28,19 @@ h1{
     width: 600px
 }
 
-.button_box{
+.submit_btn{
     margin-left: 350px;
+}
+
+table{
+    margin-left: 115px;
+}
+
+table > tr > th{
+    margin: 10px 10px 10px 10px
+}
+
+.submit_btn2{
+    margin-left: 350px;
+    margin-top: 30px;
 }

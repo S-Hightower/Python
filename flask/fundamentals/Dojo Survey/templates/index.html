@@ -11,9 +11,12 @@
     <div class="container">
         <h1>Submission Form</h1>
         <form action="/results" method="post">
-        <label for="name">Your Name:</label>
+        <div class="name_box">
+            <label for="name">Your Name:</label>
             <input type="text" name="name">
-        <label for="location">Dojo Location:</label>
+        </div>
+        <div class="location_box">
+            <label for="location">Dojo Location:</label>
             <select name="location">
                 <option value="San Jose" selected>San Jose</option>
                 <option value="Bellevue">Bellevue</option>
@@ -21,16 +24,25 @@
                 <option value="Boise">Boise</option>
                 <option value="Chicago">Chicago</option>
             </select>
-        <label for="language">Favorite Language:</label>
+        </div>
+        <div class="language_box">
+            <label for="language">Favorite Language:</label>
             <select name="language">
                 <option value="Python" selected>Python</option>
                 <option value="Javascript">JavaScript</option>
                 <option value="Java">Java</option>
                 <option value="C#">C#</option>
             </select>
-        <label for="comment">Comment(optional)</label>
-            <textarea name="comment"></textarea>
+        </div>
+        <div class="comment_box">
+            <label for="comment">Comment(optional):</label>
+            <div class="text_box">
+                <textarea name="comment"></textarea>
+            </div>
+        </div>
+        <div class="button_box" 
         <input type="submit" value="Submit">
+        </div>
         </form>
     </div>
 </body>

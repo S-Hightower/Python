@@ -11,5 +11,11 @@ def index():
     print(users)
     return render_template("read(all).html", all_users = users)
 
+@app.route('/new', methods=['POST'])
+def add_user():
+    print(request.form)
+    User.add_one(request.form)
+    return redirect('/')
+    
 if __name__=="__main__":
     app.run(debug=True)

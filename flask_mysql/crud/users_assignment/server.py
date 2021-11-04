@@ -12,7 +12,7 @@ def index():
     print(users)
     return render_template("read(all).html", all_users = users)
 
-@app.route('/new', method="POST")
+@app.route('/new')
 def add_user():
     data = {
         "first_name": request.form["first_name"],

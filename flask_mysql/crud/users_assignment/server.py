@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, session
+from flask.globals import request
 
 from models.users import User
 
@@ -11,10 +12,16 @@ def index():
     print(users)
     return render_template("read(all).html", all_users = users)
 
-@app.route('/new', methods=['POST'])
+@app.route('/new', method="POST")
 def add_user():
-    print(request.form)
-    User.add_one(request.form)
+    data = {
+        "first_name": request.form["first_name"],
+        "last_name": request.form["last_name"],
+        "email": request.form["email"]
+    }
+    User.save(data)
+    return render_template("create.html")
+
     return redirect('/')
     
 if __name__=="__main__":

@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Request Form</Form></title>
 </head>
 <body>
-    
+    <div class="container">
+        <form action="/new" method="post">
+            <div>
+                <input type="text" name="first_name" id="first_name" placeholder="First Name">
+            </div>
+            <div>
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+            </div>
+            <div>
+                <input type="text" name="email" id="email" placeholder="Email">
+            </div>
+            <a href="/" class="redirect"><button type="button">Create</button></a>
+        </form>
+    </div>
 </body>
 </html>

@@ -15,9 +15,9 @@ def index():
 @app.route('/new')
 def add_user():
     data = {
-        "first_name": request.form["first_name"],
-        "last_name": request.form["last_name"],
-        "email": request.form["email"]
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email']
     }
     User.save(data)
     return render_template("create.html")

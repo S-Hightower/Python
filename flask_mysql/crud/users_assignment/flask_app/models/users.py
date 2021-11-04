@@ -21,3 +21,8 @@ class User:
         for user in results:
             users.append( cls(user) )
         return users
+
+    @classmethod
+    def add_user(cls):
+        query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s"
+        return connectToMySQL('users_schema').query_db(query, data)

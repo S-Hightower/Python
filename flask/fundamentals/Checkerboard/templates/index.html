@@ -7,6 +7,15 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Checkerboard</title>
 </head>
+<style>
+    .color1{
+    background-color: {{colora}};
+}
+
+.color2{
+    background-color: {{colorb}};
+}
+</style>
 <body>
     <table>
         {% for i in range(down): %}

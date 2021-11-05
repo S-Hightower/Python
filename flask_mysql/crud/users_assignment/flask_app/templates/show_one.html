@@ -10,7 +10,7 @@
     <div class="container">
         <form action="/show/<int:id>">
             <h1>User Info</h1>
-            {% for user in all_users %}
+            {% for user in users %}
             <p>First Name: {{user.first_name}}</p>
             <p>Last Name: {{user.last_name}}</p>
             <p>Email: {{user.email}}</p>

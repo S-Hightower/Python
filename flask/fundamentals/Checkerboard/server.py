@@ -11,8 +11,9 @@ def step_two(num):
     return render_template('index.html', across = 8, down = int(num))
 
 @app.route('/<x>/<y>')
-def step_three(x,y):
-    return render_template('index.html', across = int(x), down =int(y))
+@app.route('/<x>/<y>/<colora>/<colorb>')
+def step_three(x,y, colora='red', colorb='black'):
+    return render_template('index.html', across = int(x), down =int(y), colora=colora, colorb=colorb)
 
 if __name__=="__main__":
     app.run(debug=True)

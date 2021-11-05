@@ -1,5 +1,7 @@
 # import the function that will return an instance of a connection
 from flask_app.config.mysqlconnection import connectToMySQL
+
+DATABASE='users_schema'
 # model the class after the friend table from our database
 class User:
     def __init__( self , data ):
@@ -14,7 +16,7 @@ class User:
     def get_all(cls):
         query = "SELECT * FROM users;"
         # make sure to call the connectToMySQL function with the schema you are targeting.
-        results = connectToMySQL('users_schema').query_db(query)
+        results = connectToMySQL(DATABASE).query_db(query)
         # Create an empty list to append our instances of friends
         users = []
         # Iterate over the db results and create instances of friends with cls.
@@ -24,5 +26,5 @@ class User:
 
     @classmethod
     def add_user(cls, data:dict):
-        query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s"
-        return connectToMySQL('users_schema').query_db(query, data)
+        query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)

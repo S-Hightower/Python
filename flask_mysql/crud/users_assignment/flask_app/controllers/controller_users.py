@@ -6,11 +6,9 @@ from flask_app.models.users import User
 def index():
     users = User.get_all()
     print(users)
-    return render_template("flask_app.templates.read(all).html", all_users = users)
+    return render_template("read(all).html", all_users = users)
 
 @app.route('/new', methods=['POST'])
 def add_user(data):
     id= users.User.create(request.form)
-    return render_template("flask_app.templates.create.html")
-
-    return redirect('/')
+    return render_template("create.html")

@@ -1,5 +1,3 @@
-from flask.globals import request
-
 from flask_app import app
 from flask_app.controllers import controller_users
     

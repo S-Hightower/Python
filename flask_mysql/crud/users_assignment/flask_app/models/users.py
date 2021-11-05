@@ -28,3 +28,8 @@ class User:
     def add_user(cls, data:dict):
         query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
+
+    @classmethod
+    def get_one(cls, data:dict):
+        query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s"
+        return connectToMySQL(DATABASE).query_db(query, data)

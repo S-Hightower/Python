@@ -9,16 +9,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>All Users</h1>
-        {% for user in all_users %}
-        <p>First Name: {{user.first_name}}</p>
-        <p>Last Name: {{user.last_name}}</p>
-        <p>Email: {{user.email}}</p>
-        <hr>
-        {% endfor %}
-        <div>
-            <a href="/new" class="new"><button type="button">Add a New User</button></a>
-        </div>
+        <form action="/new">
+            <h1>All Users</h1>
+            {% for user in all_users %}
+            <p>First Name: {{user.first_name}}</p>
+            <p>Last Name: {{user.last_name}}</p>
+            <p>Email: {{user.email}}</p>
+            <hr>
+            {% endfor %}
+            <div>
+                <button>Add a New User</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>

@@ -4,11 +4,11 @@
 }
 
 .container{
-    height: 600px;
+    /* height: 600px;
     width: 600px;
     border: 5px solid black;
     margin-top: 50px;
-    margin-left: 50px;
+    margin-left: 50px; */
 }
 
 h1{
@@ -18,11 +18,4 @@ h1{
 
 p{
     margin: 5px 0px 10px 150px;
-}
-
-.container .new{
-    position: fixed;
-    top: 625px;
-    left: 70px;
-    
 }

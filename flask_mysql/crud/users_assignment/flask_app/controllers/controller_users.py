@@ -11,14 +11,15 @@ def index():
 @app.route('/new/create', methods=['POST'])
 def add_user():
     id = User.add_user(request.form)
-    return redirect('/')
+    return redirect('/show/<int:id>')
 
 @app.route('/new')
 def new_user():
     return render_template('create.html')
 
-# @app.route('/show/<int:id>')
-# def show_user(id):
-#     context={
-#         'User': users.User.get_one({'id': id})
-#     }
+@app.route('/show/<int:id>')
+def show_user(id):
+    context={
+        'User': User.get_one({'id': id})
+    }
+    return render_template('show_one.html', **context)

@@ -1,5 +1,5 @@
 # import the function that will return an instance of a connection
-from mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the friend table from our database
 class User:
     def __init__( self , data ):
@@ -23,6 +23,6 @@ class User:
         return users
 
     @classmethod
-    def add_user(cls):
+    def add_user(cls, data:dict):
         query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s"
         return connectToMySQL('users_schema').query_db(query, data)

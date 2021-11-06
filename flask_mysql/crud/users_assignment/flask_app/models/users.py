@@ -36,3 +36,13 @@ class User:
         if not results:
             return False
         return cls(results[0])
+
+    @classmethod
+    def update_one(cls, data):
+        query="UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
+    @classmethod
+    def delete_one(cls, data):
+        query="DELETE FROM users WHERE id=%(id)s"
+        return connectToMySQL(DATABASE).query_db(query, data)

@@ -29,7 +29,7 @@ def show_user(id):
 
 # display route
 @app.route('/<int:id>/edit')
-def edit_movie(id):
+def edit_user(id):
     context = {
         'user': User.get_one({'id': id})
     }

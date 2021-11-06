@@ -8,13 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <form action="/show/<int:id>">
+        <form action="/<int:id>">
             <h1>User Info</h1>
-            {% for user in users %}
-            <p>First Name: {{user.first_name}}</p>
-            <p>Last Name: {{user.last_name}}</p>
-            <p>Email: {{user.email}}</p>
-            {% endfor %}
+            <p>First Name: {{ user.first_name }}</p>
+            <p>Last Name: {{ user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
             <div>
                 <button>Add a New User</button>
             </div>

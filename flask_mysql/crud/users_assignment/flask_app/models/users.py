@@ -32,4 +32,7 @@ class User:
     @classmethod
     def get_one(cls, data:dict):
         query = "SELECT * FROM users WHERE id = %(id)s"
-        return connectToMySQL(DATABASE).query_db(query, data)
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        if not results:
+            return False
+        return cls(results[0])

@@ -39,7 +39,7 @@ class User:
 
     @classmethod
     def update_one(cls, data):
-        query="UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s"
+        query="UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s WHERE id = %(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod

@@ -43,7 +43,7 @@ def update_user(id):
         'id' : id
     }
     User.update_one(data)
-    return redirect(f'/<int:id>')
+    return redirect(f'/{id}')
 
 #  action route
 @app.route('/<int:id>/delete')

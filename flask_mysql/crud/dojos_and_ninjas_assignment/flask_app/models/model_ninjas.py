@@ -25,24 +25,9 @@ class Ninja:
         return ninjas
 
     @classmethod
-    def add_user(cls, data:dict):
-        query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+    def add_ninja(cls, data:dict):
+        query = "INSERT INTO users (first_name, last_name, email, dojo_id) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(dojo_id)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
-
-    @classmethod
-    def get_one_dojo_with_ninjas(cls, data:dict):
-        query = "SELECT * FROM dojos LEFT JOIN ninjas on ninjas.dojo_id = dojos.id WHERE dojos.id = %(dojo.id)s"
-        results = connectToMySQL(DATABASE).query_db(query, data)
-        dojo = cls(results[0])
-        for row_from_db in results:
-            ninja_data = {
-                "id": row_from_db["ninjas.id"],
-                "first_name": row_from_db["ninjas.first_name"],
-                "last_name": row_from_db["ninjas.last_name"],
-                "age": row_from_db["ninjas.age"]
-            }
-        dojo.ninjas.append(Ninja{ninja_data})
-        return dojo
 
     # @classmethod
     # def update_one(cls, data):

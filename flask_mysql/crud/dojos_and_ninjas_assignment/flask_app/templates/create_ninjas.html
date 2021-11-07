@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/ninjas" method='POST'>
+        <form action="/create/ninja" method='POST'>
             <div class="row">
                 <div class="d-flex justify-content-between align-items-center">
                     <h1>Add New Ninja</h1>
@@ -19,7 +19,7 @@
                 <label for="dojo_id">Dojo:</label>
                 <select name="dojo_id" id="dojo_id" class="form-select">
                     {% for dojo in all_dojos%}
-                        <option value="{{ dojo_id}}">{{dojo.name}}</option>
+                        <option value="{{ dojo.id }}">{{dojo.name}}</option>
                     {% endfor %}
                 </select>
             </div>

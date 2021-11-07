@@ -1,23 +1,32 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import model_ninjas, model_dojos
+from flask_app.models import model_dojos, model_ninjas
 
-@app.route('/dojos/{{dojo_id}}')
-def index():
-    ninjas = model_ninjas.get_all()
-    print(ninjas)
-    return render_template("show_dojos.html", all_ninjas = ninjas)
+@app.route('/ninjas')
+def ninjas():
+    return render_template('ninja.html',dojos= model_dojos.Dojo.get_all())
 
-# action route
-@app.route('/ninjas', methods=['POST'])
-def add_ninja():
-    id = model_ninjas.add_ninja(request.form)
-    return redirect(f'/dojos/{{dojo_id}}')
+@app.route('/create/ninja',methods=['POST'])
+def create_ninja():
+    model_ninjas.Ninja.save(request.form)
+    return redirect('/')
 
-# display route
-@app.route('/ninjas/new')
-def new_ninja():
-    return render_template('create_ninja.html')
+# @app.route('/dojos/{{dojo_id}}')
+# def ninjas():
+#     ninjas = model_ninjas.get_all()
+#     print(ninjas)
+#     return render_template("show_dojos.html", all_ninjas = ninjas)
+
+# # action route
+# @app.route('/ninjas', methods=['POST'])
+# def add_ninja():
+#     id = model_ninjas.add_ninja(request.form)
+#     return redirect(f'/dojos/{{dojo_id}}')
+
+# # display route
+# @app.route('/ninjas/new')
+# def new_ninja():
+#     return render_template('create_ninja.html')
 
 # #display route
 # @app.route('/<int:id>')

@@ -4,12 +4,13 @@ from flask_app.models import model_dojos, model_ninjas
 
 @app.route('/ninjas')
 def ninjas():
-    return render_template('ninja.html',dojos= model_dojos.Dojo.get_all())
+    return render_template('create_ninjas.html',dojos= model_dojos.Dojo.get_all())
 
 @app.route('/create/ninja',methods=['POST'])
 def create_ninja():
-    model_ninjas.Ninja.save(request.form)
-    return redirect('/')
+    model_ninjas.Ninja.add_ninja(request.form)
+    id = request.form["dojo_id"]
+    return redirect(f'/dojos/{id}')
 
 # @app.route('/dojos/{{dojo_id}}')
 # def ninjas():

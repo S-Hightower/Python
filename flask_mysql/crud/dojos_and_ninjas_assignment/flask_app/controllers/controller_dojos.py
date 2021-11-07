@@ -15,7 +15,7 @@ def dojos():
 @app.route('/create/dojo', methods=['POST'])
 def add_dojo():
     id = model_dojos.Dojo.add_dojo(request.form)
-    return redirect('/dojo/<int:id>')
+    return redirect('/dojos')
 
 # # display route
 # @app.route('/new')
@@ -25,10 +25,8 @@ def add_dojo():
 #display route
 @app.route('/dojos/<int:id>')
 def show_dojo(id):
-    data = {
-        'id': id
-    }
-    return render_template('show_dojos.html', dojo=Dojo.get_one_with_ninjas(data))
+    data = model_dojos.Dojo.get_one_with_ninjas({'id': id})
+    return render_template('show_dojos.html', dojo=data)
 
 # # display route
 # @app.route('/<int:id>/edit')

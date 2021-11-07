@@ -31,13 +31,13 @@
                         <tbody>
                             {% for dojo in all_dojos %}
                             <tr>
-                                <td>{{ dojo.name }}</td>
+                                <td><a href="/dojos/{{dojo.id}}" class="btn btn-link">{{dojo.name}}</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <a href="/dojo/{{dojo_id}}" class="text-warning">{{dojo.name}}</a>
+                <a href="/ninjas" class="btn btn-info">Add a Ninja</a>
             </div>
         </div>
     </div>

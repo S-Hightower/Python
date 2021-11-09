@@ -1,52 +1,51 @@
+import re
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.model_user import User
+from flask_bcrypt import Bcrypt
 
-@app.route('/')
-def index():
-    users = User.get_all()
-    print(users)
-    return render_template("read(all).html", all_users = users)
-
-# action route
-@app.route('/new/create', methods=['POST'])
-def add_user():
-    id = User.add_user(request.form)
-    return redirect(f'/{id}')
-
-# display route
-@app.route('/new')
-def new_user():
-    return render_template('create.html')
+bcrypt = Bcrypt(app)
 
 #display route
-@app.route('/<int:id>')
-def show_user(id):
-    context = {
-        'user': User.get_one({'id': id})
-    }
-    return render_template('show_one.html', **context)
-
-# display route
-@app.route('/<int:id>/edit')
-def edit_user(id):
-    context = {
-        'user': User.get_one({'id': id})
-    }
-    return render_template('user_edit.html', **context)
-
+@app.route('/')
+def index():
+    return render_template("index.html")
 # action route
-@app.route('/<int:id>/update', methods=['POST'])
-def update_user(id):
+@app.route('/register', methods=['POST'])
+def add_user():
+    if not User.register_validation(request.form):
+        return redirect("/")
+
+    hasher = bcrypt.generate_password_hash(request.form['password'])
     data = {
         **request.form,
-        'id' : id
+        "password": hasher
     }
-    User.update_one(data)
-    return redirect(f'/{id}')
 
-#  action route
-@app.route('/<int:id>/delete')
-def delete_user(id):
-    User.delete_one({'id':id})
-    return redirect('/')
+    user_id = User.add_user(data)
+
+    session["uuid"] = user_id
+
+    return redirect("/success")
+
+#display route
+@app.route("/logout")
+def logout():
+    session.clear()
+
+    return redirect("/")
+#display route
+@app.route('/success')
+def show_user():
+    return render_template('success.html', user = User.get_by_id({"id": session["uuid"]}))
+#action route
+@app.route('/login', methods=['POST'])
+def login():
+    if not User.login_validation(request.form):
+        return redirect("/")
+
+    user = User.get_by_email({"email": request.form["email"]})
+
+    session["uuid"] = user.id
+
+    return redirect("/success")

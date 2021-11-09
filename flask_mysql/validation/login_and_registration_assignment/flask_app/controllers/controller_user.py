@@ -32,8 +32,8 @@ def add_user():
 @app.route("/logout")
 def logout():
     session.clear()
-
     return redirect("/")
+
 #display route
 @app.route('/success')
 def show_user():

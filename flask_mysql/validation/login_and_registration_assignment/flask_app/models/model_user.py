@@ -32,20 +32,20 @@ class User:
 
     @classmethod
     def get_by_email(cls, data):
-        query = "SELECT * FROM user WHERE email = %(email)s;"
+        query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(DATABASE).query_db(query, data)
 # returns list of dictionaries
-        if len(results) < 1:
+        if not results:
             return False
 
         return User(results[0])
         
     @classmethod
     def get_by_id(cls, data):
-        query = "SELECT * FROM user WHERE id = %(id)s;"
+        query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(DATABASE).query_db(query, data)
 # returns list of dictionaries
-        if len(results) < 1:
+        if not results:
             return False
 
         return User(results[0])

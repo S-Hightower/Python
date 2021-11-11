@@ -43,10 +43,10 @@ class Recipe:
 
     @classmethod
     def update_one(cls, data):
-        query="UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s WHERE id = %(id)s"
+        query="UPDATE recipes SET name=%(name)s, description=%(description)s, under_30=%(under_30)s, instructions=%(instructions)s, date_made=%(date_made)s, users_id=%(users_id)s WHERE id = %(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def delete_one(cls, data):
-        query="DELETE FROM users WHERE id=%(id)s"
+        query="DELETE FROM recipes WHERE id=%(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)

@@ -30,3 +30,26 @@ def create():
 def show_recipe(id):
     data = Recipe.get_one({'id': id})
     return render_template('show_recipe.html', recipe = data, user = User.get_by_id({"id": session["uuid"]}))
+
+@app.route('/<int:id>/edit')
+def edit_recipe(id):
+    context = {
+        'recipe': Recipe.get_one({'id': id})
+    }
+    return render_template('recipe_edit.html', **context)
+
+# action route
+@app.route('/<int:id>/update', methods=['POST'])
+def update_recipe(id):
+    data = {
+        **request.form,
+        'id' : id
+    }
+    User.update_one(data)
+    return redirect(f'/{id}')
+
+#  action route
+@app.route('/<int:id>/delete')
+def delete_recipe(id):
+    User.delete_one({'id':id})
+    return redirect('/dashboard')

@@ -2,6 +2,7 @@ import re
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.model_user import User
+from flask_app.models.model_recipe import Recipe
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
@@ -45,3 +46,12 @@ def login():
     session["uuid"] = user.id
 
     return redirect("/dashboard")
+
+# @app.route('/dashboard')
+# def dashboard():
+#     if 'user_id' not in session:
+#         return redirect ('/dashboard')
+#     data={
+#         'id': session['user_id']
+#     }
+#     return render_template("dashbaord.html", user=User.get_by_id(data), recipes=Recipe.get_all())

@@ -1,6 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app import app
 
 DATABASE='recipes'
 
@@ -52,16 +51,18 @@ class Recipe:
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @staticmethod
-    def recipe_validation(post_data):
+    def recipe_validation(recipe):
         is_valid = True
 
-        if len(post_data["name"]) < 3:
+        if len(recipe["name"]) < 3:
             flash("Recipe Name must be at least 3 characters.")
             is_valid = False
 
-        if len(post_data["description"]) < 3:
+        if len(recipe["description"]) < 3:
             flash("Description must be at least 3 characters.")
             is_valid = False
 
-        if len(post_data["instructions"]) < 3:
+        if len(recipe["instructions"]) < 3:
             flash("Instructions must be at least 3 characters.")
+
+        return is_valid

@@ -34,10 +34,6 @@ def logout():
     session.clear()
     return redirect("/")
 
-#display route
-@app.route('/dashboard')
-def show_user():
-    return render_template('dashboard.html', user = User.get_by_id({"id": session["uuid"]}))
 #action route
 @app.route('/login', methods=['POST'])
 def login():

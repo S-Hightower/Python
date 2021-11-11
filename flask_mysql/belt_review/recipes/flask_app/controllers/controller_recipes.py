@@ -45,11 +45,11 @@ def update_recipe(id):
         **request.form,
         'id' : id
     }
-    User.update_one(data)
-    return redirect(f'/{id}')
+    Recipe.update_one(data)
+    return redirect(f'/recipe/{id}')
 
 #  action route
 @app.route('/<int:id>/delete')
 def delete_recipe(id):
-    User.delete_one({'id':id})
+    Recipe.delete_one({'id':id})
     return redirect('/dashboard')

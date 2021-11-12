@@ -10,7 +10,10 @@ bcrypt = Bcrypt(app)
 #display route
 @app.route('/')
 def index():
+    if "uuid" in session:
+        return redirect('/dashboard')
     return render_template("index.html")
+
 # action route
 @app.route('/register', methods=['POST'])
 def add_user():
@@ -46,12 +49,3 @@ def login():
     session["uuid"] = user.id
 
     return redirect("/dashboard")
-
-# @app.route('/dashboard')
-# def dashboard():
-#     if 'user_id' not in session:
-#         return redirect ('/dashboard')
-#     data={
-#         'id': session['user_id']
-#     }
-#     return render_template("dashbaord.html", user=User.get_by_id(data), recipes=Recipe.get_all())

@@ -12,8 +12,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <form action="/{{recipe.id}}/update" method='POST'>
+        <form action="/{{recipe.id}}/update" method='POST'>
+            <div class="row">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="col-sm-8">
                         <h1>Edit a Recipe</h1>
@@ -53,7 +53,7 @@
             </div>
             <button class="btn btn-outline-primary" type="submit">Update Recipe</button>
         </form>
-        {% with messages = get_flashed_messages(category_filter=['recipe']) %}
+        {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
                     <label style="color: red;">{{ message }}</label>

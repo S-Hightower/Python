@@ -2,10 +2,11 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_bcrypt import Bcrypt
+from flask_app.models import model_recipe
 from flask_app import app
 import re
 
-DATABASE='recipes'
+DATABASE='recipes_assignment'
 #instantiate bcrypt class
 bcrypt = Bcrypt(app)
 
@@ -18,6 +19,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.recipes = []
 
     @classmethod
     def get_all(cls):

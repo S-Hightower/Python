@@ -1,7 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import model_user
 
-DATABASE='recipes'
+DATABASE='recipes_assignment'
 
 class Recipe:
     def __init__( self , data ):
@@ -13,7 +14,7 @@ class Recipe:
         self.date_made = data['date_made']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.users_id = data['users_id']
+        self.user = model_user.User.get_by_id({"id": data['user_id']})
     # Now we use class methods to query our database
     @classmethod
     def get_all(cls):
@@ -23,13 +24,13 @@ class Recipe:
         # Create an empty list to append our instances
         recipes = []
         # Iterate over the db results and create instances with cls.
-        for recipe in results:
-            recipes.append( cls(recipe) )
+        for row in results:
+            recipes.append(cls(row))
         return recipes
 
     @classmethod
     def add_recipe(cls, data:dict):
-        query = "INSERT INTO recipes (name, description, under_30, instructions, date_made, users_id) VALUES (%(name)s, %(description)s, %(under_30)s, %(instructions)s, %(date_made)s, %(users_id)s);"
+        query = "INSERT INTO recipes (name, description, under_30, instructions, date_made, user_id, created_at, updated_at) VALUES (%(name)s, %(description)s, %(under_30)s, %(instructions)s, %(date_made)s, %(user_id)s, NOW(), NOW());"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
@@ -42,7 +43,7 @@ class Recipe:
 
     @classmethod
     def update_one(cls, data):
-        query="UPDATE recipes SET name=%(name)s, description=%(description)s, under_30=%(under_30)s, instructions=%(instructions)s, date_made=%(date_made)s WHERE id = %(id)s"
+        query="UPDATE recipes SET name=%(name)s, description=%(description)s, under_30=%(under_30)s, instructions=%(instructions)s, date_made=%(date_made)s, updated_at= NOW() WHERE id = %(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
@@ -51,18 +52,19 @@ class Recipe:
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @staticmethod
-    def recipe_validation(recipe):
+    def validate(post_data):
         is_valid = True
 
-        if len(recipe["name"]) < 3:
+        if len(post_data["name"]) < 3:
             flash("Recipe Name must be at least 3 characters.")
             is_valid = False
 
-        if len(recipe["description"]) < 3:
+        if len(post_data["description"]) < 3:
             flash("Description must be at least 3 characters.")
             is_valid = False
 
-        if len(recipe["instructions"]) < 3:
+        if len(post_data["instructions"]) < 3:
             flash("Instructions must be at least 3 characters.")
+            is_valid = False
 
         return is_valid
